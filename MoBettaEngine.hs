@@ -199,7 +199,8 @@ intCalc (IntConst val) = return val
 intCalc (ABin op expr1 expr2) = do
   c1 <- intCalc expr1
   c2 <- intCalc expr2
-  return ((fromMaybe(error "this shouldn't happen")(lookup op aBinOps))c1 c2)
+  if c2 == 0 && op == Div then error "Division by Zero" else
+    return ((fromMaybe(error "this shouldn't happen")(lookup op aBinOps))c1 c2)
 
 intCalc (AUn op expr) = do
   c <- intCalc expr
