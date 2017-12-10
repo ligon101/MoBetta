@@ -199,7 +199,7 @@ intCalc (IntConst val) = return val
 intCalc (ABin op expr1 expr2) = do
   c1 <- intCalc expr1
   c2 <- intCalc expr2
-  return ((fromMaybe(error "This should never happen")(lookup op aBinOps)) c1 c2)
+  return ((fromMaybe(error "this shouldn't happen")(lookup op aBinOps))c1 c2)
 
 intCalc (AUn op expr) = do
   c <- intCalc expr

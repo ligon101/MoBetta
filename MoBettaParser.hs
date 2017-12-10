@@ -44,7 +44,7 @@ statementParser = choice
 
     messageStmt = do
       lexeme (string "message")
-      s <- stringLiteral
+      s <- lexeme stringLiteral
       return (Msg s)
 
     ifStmt = do
@@ -98,8 +98,8 @@ bFactor = choice [comparison
 
 
 bOpTable = [[ prefix "not" (BUn Not)]
-            , [binary "&&" (BBin And)
-            , binary "||" (BBin Or)]]
+            , [binary "and" (BBin And)
+            , binary "or" (BBin Or)]]
 
 -- This is a bit tricky. It is a parser for expressions like x % 2 == 0"
 comparison = do

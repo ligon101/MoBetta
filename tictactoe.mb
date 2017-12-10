@@ -11,8 +11,7 @@ while row < 12 do {
       message "-"
     else if col%8 == 0 then
       message "|"
-    else
-      message " ";
+    else message " ";
     col = col + 1
   };
   message "\n";
